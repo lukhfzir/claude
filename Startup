@@ -1,0 +1,255 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="memory"
+
+mkdir -p "$ROOT"/{sessions,archive,templates}
+
+cat > "$ROOT/project_memory.md" <<'EOF'
+# Project Memory
+
+## Project Summary
+
+## Current Objectives
+
+## Active Workstreams
+
+## Constraints
+
+## Assumptions
+
+## Important Context
+EOF
+
+cat > "$ROOT/decisions.md" <<'EOF'
+# Architecture Decision Record (ADR)
+
+## Format
+
+### ADR-XXXX
+Status:
+Date:
+Decision:
+Reason:
+Alternatives Considered:
+Consequences:
+EOF
+
+cat > "$ROOT/todo.md" <<'EOF'
+# Task Backlog
+
+## Critical
+
+## High
+
+## Medium
+
+## Low
+
+## Completed
+EOF
+
+cat > "$ROOT/suggestions.md" <<'EOF'
+# Suggestion Registry
+
+| ID | Suggestion | Status | Date | Notes |
+|----|------------|---------|------|-------|
+
+Status:
+- Proposed
+- Accepted
+- Rejected
+- Deferred
+- Completed
+EOF
+
+cat > "$ROOT/rejected_ideas.md" <<'EOF'
+# Rejected Ideas
+
+## Template
+
+### Idea Name
+Date:
+Reason Rejected:
+Potential Future Revisit:
+EOF
+
+cat > "$ROOT/known_issues.md" <<'EOF'
+# Known Issues
+
+## Open
+
+## Investigating
+
+## Resolved
+EOF
+
+cat > "$ROOT/bugs.md" <<'EOF'
+# Bug Tracker
+
+## Critical
+
+## Major
+
+## Minor
+EOF
+
+cat > "$ROOT/tech_debt.md" <<'EOF'
+# Technical Debt
+
+## Debt Items
+
+### Item
+Impact:
+Priority:
+Mitigation:
+EOF
+
+cat > "$ROOT/architecture.md" <<'EOF'
+# System Architecture
+
+## Overview
+
+## Components
+
+## Data Flow
+
+## Dependencies
+
+## Deployment
+EOF
+
+cat > "$ROOT/api_contracts.md" <<'EOF'
+# API Contracts
+
+## Endpoints
+
+## Request Schemas
+
+## Response Schemas
+
+## Versioning
+EOF
+
+cat > "$ROOT/environment.md" <<'EOF'
+# Environment Documentation
+
+## Development
+
+## Staging
+
+## Production
+
+## Secrets Management
+EOF
+
+cat > "$ROOT/commands.md" <<'EOF'
+# Operational Commands
+
+## Build
+
+## Test
+
+## Lint
+
+## Deploy
+
+## Rollback
+EOF
+
+cat > "$ROOT/changelog.md" <<'EOF'
+# Changelog
+
+## Unreleased
+EOF
+
+cat > "$ROOT/user_preferences.md" <<'EOF'
+# User Preferences
+
+## Coding Style
+
+## Architecture Preferences
+
+## Tooling Preferences
+
+## Things To Avoid
+EOF
+
+cat > "$ROOT/lessons_learned.md" <<'EOF'
+# Lessons Learned
+
+## Date
+
+### Observation
+
+### Action
+EOF
+
+cat > "$ROOT/risk_register.md" <<'EOF'
+# Risk Register
+
+| Risk | Impact | Probability | Mitigation |
+|--------|--------|--------|--------|
+EOF
+
+cat > "$ROOT/session_template.md" <<'EOF'
+# Session Record
+
+Date:
+
+## Goal
+
+## Work Completed
+
+## Decisions Made
+
+## Problems Found
+
+## Suggestions Added
+
+## Next Actions
+EOF
+
+cat > CLAUDE.md <<'EOF'
+# Claude Code Operating Instructions
+
+Before starting work:
+
+1. Read:
+   - memory/project_memory.md
+   - memory/decisions.md
+   - memory/todo.md
+   - memory/known_issues.md
+   - memory/suggestions.md
+   - memory/rejected_ideas.md
+   - memory/user_preferences.md
+
+2. Produce:
+   - Current state summary
+   - Active priorities
+   - Risks
+   - Outstanding work
+
+3. Before making recommendations:
+   - Check suggestions.md
+   - Check rejected_ideas.md
+   - Avoid repeating rejected ideas
+   - Avoid repeating completed work
+   - Explain why a repeated suggestion is still relevant
+
+4. After every significant change:
+   - Update decisions.md
+   - Update changelog.md
+   - Update todo.md
+   - Update session log
+
+5. Record:
+   - Lessons learned
+   - Architecture changes
+   - Technical debt introduced
+   - Risks discovered
+
+6. Always preserve consistency with prior decisions unless explicitly overridden.
+EOF
+
+echo "Production memory framework created."
