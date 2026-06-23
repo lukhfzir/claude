@@ -1,0 +1,271 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="database"
+
+mkdir -p "$ROOT"/{
+schemas,
+migrations,
+indexes,
+queries,
+performance,
+security,
+backups,
+data-quality,
+lineage,
+archive
+}
+
+cat > "$ROOT/README.md" <<'EOF'
+# Database Knowledge Base
+
+Central source of truth for database architecture,
+schemas, migrations, performance, security,
+operations, and governance.
+EOF
+
+cat > "$ROOT/architecture.md" <<'EOF'
+# Database Architecture
+
+## Overview
+
+## Database Engines
+
+## Clusters
+
+## Replication Strategy
+
+## Partitioning Strategy
+
+## Scaling Strategy
+
+## Disaster Recovery
+EOF
+
+cat > "$ROOT/data_dictionary.md" <<'EOF'
+# Data Dictionary
+
+| Table | Description | Owner |
+|---------|---------|---------|
+EOF
+
+cat > "$ROOT/entity_relationships.md" <<'EOF'
+# Entity Relationships
+
+## Core Entities
+
+## Relationships
+
+## Cardinality
+
+## Constraints
+EOF
+
+cat > "$ROOT/schemas/schema_registry.md" <<'EOF'
+# Schema Registry
+
+| Schema | Version | Status |
+|----------|----------|----------|
+EOF
+
+cat > "$ROOT/migrations/migration_history.md" <<'EOF'
+# Migration History
+
+| Migration | Date | Author | Status |
+|-------------|----------|----------|----------|
+EOF
+
+cat > "$ROOT/indexes/index_registry.md" <<'EOF'
+# Index Registry
+
+| Table | Index | Purpose |
+|---------|---------|---------|
+EOF
+
+cat > "$ROOT/queries/critical_queries.md" <<'EOF'
+# Critical Queries
+
+## Query
+
+Purpose:
+
+Performance Target:
+
+Owner:
+EOF
+
+cat > "$ROOT/performance/performance_baseline.md" <<'EOF'
+# Performance Baseline
+
+## Latency Targets
+
+## Throughput Targets
+
+## Storage Targets
+EOF
+
+cat > "$ROOT/performance/slow_queries.md" <<'EOF'
+# Slow Query Registry
+
+## Query
+
+Issue:
+
+Resolution:
+EOF
+
+cat > "$ROOT/security/access_control.md" <<'EOF'
+# Access Control
+
+## Roles
+
+## Permissions
+
+## Service Accounts
+EOF
+
+cat > "$ROOT/security/data_classification.md" <<'EOF'
+# Data Classification
+
+## Public
+
+## Internal
+
+## Confidential
+
+## Restricted
+EOF
+
+cat > "$ROOT/security/encryption.md" <<'EOF'
+# Encryption Standards
+
+## At Rest
+
+## In Transit
+
+## Key Management
+EOF
+
+cat > "$ROOT/backups/backup_policy.md" <<'EOF'
+# Backup Policy
+
+## Frequency
+
+## Retention
+
+## Restore Testing
+
+## Recovery Objectives
+EOF
+
+cat > "$ROOT/data-quality/validation_rules.md" <<'EOF'
+# Data Quality Rules
+
+## Constraints
+
+## Validation
+
+## Monitoring
+EOF
+
+cat > "$ROOT/data-quality/anomalies.md" <<'EOF'
+# Data Anomalies
+
+## Issue
+
+Impact:
+
+Resolution:
+EOF
+
+cat > "$ROOT/lineage/data_lineage.md" <<'EOF'
+# Data Lineage
+
+## Source Systems
+
+## Transformations
+
+## Consumers
+EOF
+
+cat > "$ROOT/retention_policy.md" <<'EOF'
+# Data Retention Policy
+
+## Operational Data
+
+## Audit Data
+
+## Logs
+
+## Archived Data
+EOF
+
+cat > "$ROOT/database_decisions.md" <<'EOF'
+# Database ADR
+
+## DB-0001
+
+Date:
+Decision:
+Reason:
+Alternatives:
+Consequences:
+EOF
+
+cat > "$ROOT/runbook.md" <<'EOF'
+# Database Operations Runbook
+
+## Startup
+
+## Shutdown
+
+## Failover
+
+## Recovery
+
+## Maintenance
+EOF
+
+cat > DATABASE_AGENT.md <<'EOF'
+# Database Agent Instructions
+
+Before making any database change:
+
+1. Read:
+   - database/architecture.md
+   - database/data_dictionary.md
+   - database/entity_relationships.md
+   - database/database_decisions.md
+   - database/migrations/migration_history.md
+   - database/indexes/index_registry.md
+
+2. Validate:
+   - Existing schema
+   - Existing indexes
+   - Existing constraints
+   - Existing migration history
+
+3. Never:
+   - Drop data without explicit approval
+   - Change primary keys casually
+   - Break backwards compatibility
+   - Duplicate indexes
+
+4. Every schema change must update:
+   - Schema registry
+   - Migration history
+   - Data dictionary
+   - Entity relationships
+
+5. Every performance change must update:
+   - Index registry
+   - Performance baseline
+   - Critical queries
+
+6. Every security change must update:
+   - Access control
+   - Data classification
+   - Encryption standards
+EOF
+
+echo "Enterprise database framework created."
