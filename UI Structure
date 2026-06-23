@@ -1,0 +1,293 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="ui"
+
+mkdir -p "$ROOT"/{
+flows,
+wireframes,
+screens,
+components,
+design-system,
+research,
+accessibility,
+assets,
+handoff,
+archive
+}
+
+cat > "$ROOT/README.md" <<'EOF'
+# UI Documentation Hub
+
+This directory contains all UI/UX documentation,
+flows, design decisions, research, accessibility
+requirements, and implementation guidance.
+EOF
+
+cat > "$ROOT/product_requirements.md" <<'EOF'
+# Product Requirements
+
+## Product Vision
+
+## Business Goals
+
+## User Goals
+
+## Success Metrics
+
+## Constraints
+EOF
+
+cat > "$ROOT/personas.md" <<'EOF'
+# User Personas
+
+## Persona Template
+
+### Name
+### Goals
+### Frustrations
+### Behaviors
+### Technical Level
+EOF
+
+cat > "$ROOT/user_journeys.md" <<'EOF'
+# User Journeys
+
+## Journey Name
+
+### Trigger
+
+### User Actions
+
+### System Response
+
+### Success Criteria
+
+### Failure States
+EOF
+
+cat > "$ROOT/design_decisions.md" <<'EOF'
+# Design Decision Log
+
+## DD-0001
+
+Date:
+Decision:
+Reason:
+Alternatives:
+Impact:
+EOF
+
+cat > "$ROOT/design_principles.md" <<'EOF'
+# Design Principles
+
+1. Simplicity
+2. Consistency
+3. Accessibility
+4. Predictability
+5. Performance
+EOF
+
+cat > "$ROOT/accessibility/accessibility_requirements.md" <<'EOF'
+# Accessibility Requirements
+
+## WCAG Compliance Target
+
+## Keyboard Navigation
+
+## Screen Reader Support
+
+## Color Contrast
+
+## Focus States
+EOF
+
+cat > "$ROOT/design-system/tokens.md" <<'EOF'
+# Design Tokens
+
+## Colors
+
+## Typography
+
+## Spacing
+
+## Radius
+
+## Shadows
+
+## Breakpoints
+EOF
+
+cat > "$ROOT/design-system/components.md" <<'EOF'
+# Component Registry
+
+| Component | Status | Owner | Notes |
+|------------|---------|--------|---------|
+EOF
+
+cat > "$ROOT/design-system/patterns.md" <<'EOF'
+# UX Patterns
+
+## Navigation
+
+## Forms
+
+## Tables
+
+## Search
+
+## Empty States
+
+## Error States
+EOF
+
+cat > "$ROOT/screens/screen_inventory.md" <<'EOF'
+# Screen Inventory
+
+| Screen | Status | Route | Notes |
+|---------|---------|---------|---------|
+EOF
+
+cat > "$ROOT/screens/navigation_map.md" <<'EOF'
+# Navigation Map
+
+## Public Routes
+
+## Authenticated Routes
+
+## Admin Routes
+EOF
+
+cat > "$ROOT/flows/user_flows.md" <<'EOF'
+# User Flows
+
+## Authentication
+
+## Onboarding
+
+## Purchase Flow
+
+## Settings Flow
+
+## Support Flow
+EOF
+
+cat > "$ROOT/flows/state_diagrams.md" <<'EOF'
+# UI State Diagrams
+
+## Loading
+
+## Empty
+
+## Success
+
+## Error
+
+## Offline
+EOF
+
+cat > "$ROOT/research/user_feedback.md" <<'EOF'
+# User Feedback Repository
+
+## Feedback
+
+### Source
+
+### Observation
+
+### Impact
+
+### Priority
+EOF
+
+cat > "$ROOT/research/usability_findings.md" <<'EOF'
+# Usability Findings
+
+## Finding
+
+## Evidence
+
+## Recommendation
+EOF
+
+cat > "$ROOT/research/competitor_analysis.md" <<'EOF'
+# Competitor Analysis
+
+## Competitor
+
+### Strengths
+
+### Weaknesses
+
+### Opportunities
+EOF
+
+cat > "$ROOT/handoff/frontend_mapping.md" <<'EOF'
+# Design To Frontend Mapping
+
+| Screen | Components | API | Status |
+|----------|------------|---------|---------|
+EOF
+
+cat > "$ROOT/handoff/responsive_rules.md" <<'EOF'
+# Responsive Design Rules
+
+## Mobile
+
+## Tablet
+
+## Desktop
+
+## Large Desktop
+EOF
+
+cat > "$ROOT/handoff/implementation_notes.md" <<'EOF'
+# Frontend Implementation Notes
+
+## Constraints
+
+## Special Behaviors
+
+## Performance Requirements
+EOF
+
+cat > UI_AGENT.md <<'EOF'
+# UI Design Agent Instructions
+
+Before creating any new UI:
+
+1. Read:
+   - ui/design_principles.md
+   - ui/design_decisions.md
+   - ui/design-system/components.md
+   - ui/screens/screen_inventory.md
+   - ui/flows/user_flows.md
+
+2. Check:
+   - Existing screens
+   - Existing components
+   - Existing UX patterns
+
+3. Avoid:
+   - Recreating existing screens
+   - Introducing duplicate components
+   - Violating design system rules
+
+4. Every new screen must include:
+   - User goal
+   - Success path
+   - Failure states
+   - Empty states
+   - Loading states
+   - Accessibility requirements
+   - Responsive behavior
+
+5. Every design change must update:
+   - screen_inventory.md
+   - design_decisions.md
+   - frontend_mapping.md
+
+6. Maintain consistency with all previous design decisions.
+EOF
+
+echo "Enterprise UI/UX framework created."
