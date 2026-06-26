@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="backend"
+
+mkdir -p "$ROOT"/{
+sessions,
+archive,
+templates
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+create "README.md" "Backend Knowledge Base"
+create "index.md" "Backend Index"
+create "architecture.md" "System Architecture"
+create "system_overview.md" "System Overview"
+create "service_catalog.md" "Service Catalog"
+create "domain_model.md" "Domain Model"
+create "business_rules.md" "Business Rules"
+create "api_contracts.md" "API Contracts"
+create "endpoints.md" "Endpoint Registry"
+create "authentication.md" "Authentication"
+create "authorization.md" "Authorization"
+create "middleware.md" "Middleware"
+create "validation_rules.md" "Validation Rules"
+create "error_handling.md" "Error Handling"
+create "exception_catalog.md" "Exception Catalog"
+create "event_catalog.md" "Domain Events"
+create "queues.md" "Queues"
+create "schedulers.md" "Scheduled Jobs"
+create "caching.md" "Caching Strategy"
+create "configuration.md" "Configuration"
+create "feature_flags.md" "Feature Flags"
+create "integrations.md" "Third Party Integrations"
+create "external_services.md" "External Services"
+create "environment_variables.md" "Environment Variables"
+create "observability.md" "Observability"
+create "logging.md" "Logging"
+create "monitoring.md" "Monitoring"
+create "metrics.md" "Metrics"
+create "rate_limiting.md" "Rate Limiting"
+create "performance.md" "Performance"
+create "scaling.md" "Scaling"
+create "security.md" "Backend Security"
+create "coding_standards.md" "Coding Standards"
+create "architecture_decisions.md" "Architecture Decision Records"
+create "known_issues.md" "Known Issues"
+create "tech_debt.md" "Technical Debt"
+create "runbooks.md" "Operational Runbooks"
+create "changelog.md" "Backend Changelog"
+
+cat > BACKEND_AGENT.md <<'EOF'
+# Backend Agent Instructions
+
+Before making changes:
+
+1. Read:
+   - backend/index.md
+   - backend/architecture.md
+   - backend/system_overview.md
+   - backend/business_rules.md
+   - backend/api_contracts.md
+   - backend/service_catalog.md
+   - backend/domain_model.md
+   - backend/architecture_decisions.md
+   - backend/security.md
+   - backend/known_issues.md
+   - backend/tech_debt.md
+
+2. Validate:
+   - Existing APIs
+   - Existing business rules
+   - Existing services
+   - Existing events
+   - Existing integrations
+
+3. Never:
+   - Break API compatibility
+   - Duplicate business logic
+   - Duplicate endpoints
+   - Bypass authentication
+   - Ignore validation rules
+   - Remove logging
+   - Remove monitoring
+
+4. Every feature must update:
+   - endpoints.md
+   - api_contracts.md
+   - changelog.md
+   - service_catalog.md
+   - architecture.md (if needed)
+
+5. Every API change must document:
+   - Request schema
+   - Response schema
+   - Errors
+   - Permissions
+   - Version impact
+
+6. Every service change must document:
+   - Dependencies
+   - Events
+   - Queues
+   - External integrations
+
+7. Keep changes consistent with existing architecture unless explicitly instructed otherwise.
+EOF
+
+echo "Enterprise backend framework created."
