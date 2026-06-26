@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="ai"
+
+mkdir -p "$ROOT"/{
+templates,
+evaluations,
+prompts,
+datasets,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:AI Knowledge Base"
+"index.md:AI Index"
+"architecture.md:AI Architecture"
+"strategy.md:AI Strategy"
+"roadmap.md:AI Roadmap"
+"use_cases.md:Use Cases"
+"business_objectives.md:Business Objectives"
+"model_registry.md:Model Registry"
+"model_selection.md:Model Selection"
+"model_versions.md:Model Versions"
+"providers.md:Providers"
+"prompts.md:Prompt Strategy"
+"prompt_library.md:Prompt Library"
+"prompt_templates.md:Prompt Templates"
+"system_prompts.md:System Prompts"
+"prompt_versioning.md:Prompt Versioning"
+"prompt_testing.md:Prompt Testing"
+"prompt_changelog.md:Prompt Changelog"
+"agents.md:Agents"
+"agent_registry.md:Agent Registry"
+"agent_workflows.md:Agent Workflows"
+"orchestration.md:Agent Orchestration"
+"multi_agent.md:Multi-Agent Systems"
+"tools.md:Tool Usage"
+"tool_registry.md:Tool Registry"
+"tool_permissions.md:Tool Permissions"
+"tool_safety.md:Tool Safety"
+"memory.md:AI Memory"
+"memory_strategy.md:Memory Strategy"
+"retrieval.md:Retrieval"
+"rag.md:RAG"
+"embeddings.md:Embeddings"
+"vector_database.md:Vector Database"
+"context_management.md:Context Management"
+"context_window.md:Context Window"
+"chunking.md:Chunking Strategy"
+"reranking.md:Reranking"
+"knowledge_sources.md:Knowledge Sources"
+"evaluation.md:Evaluation"
+"benchmark.md:Benchmarks"
+"quality_metrics.md:Quality Metrics"
+"hallucination_tracking.md:Hallucination Tracking"
+"guardrails.md:Guardrails"
+"safety.md:Safety"
+"moderation.md:Moderation"
+"privacy.md:Privacy"
+"pii.md:PII Handling"
+"prompt_injection.md:Prompt Injection"
+"jailbreaks.md:Jailbreak Protection"
+"cost_management.md:Cost Management"
+"token_usage.md:Token Usage"
+"latency.md:Latency"
+"caching.md:Caching"
+"observability.md:Observability"
+"logging.md:Logging"
+"monitoring.md:Monitoring"
+"feedback.md:User Feedback"
+"fine_tuning.md:Fine-tuning"
+"datasets.md:Datasets"
+"synthetic_data.md:Synthetic Data"
+"architecture_decisions.md:AI ADR"
+"changelog.md:AI Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise AI framework created."
