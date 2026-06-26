@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="analytics"
+
+mkdir -p "$ROOT"/{
+dashboards,
+sql,
+reports,
+templates,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Analytics Knowledge Base"
+"index.md:Analytics Index"
+"analytics_strategy.md:Analytics Strategy"
+"analytics_architecture.md:Analytics Architecture"
+"event_taxonomy.md:Event Taxonomy"
+"event_catalog.md:Event Catalog"
+"event_naming.md:Event Naming Convention"
+"tracking_plan.md:Tracking Plan"
+"instrumentation.md:Instrumentation Guide"
+"user_identity.md:User Identity"
+"session_tracking.md:Session Tracking"
+"attribution.md:Attribution"
+"funnels.md:Funnels"
+"customer_journey.md:Customer Journey Analytics"
+"conversion_metrics.md:Conversion Metrics"
+"business_metrics.md:Business Metrics"
+"product_metrics.md:Product Metrics"
+"engineering_metrics.md:Engineering Metrics"
+"operational_metrics.md:Operational Metrics"
+"executive_dashboard.md:Executive Dashboard"
+"dashboard_catalog.md:Dashboard Catalog"
+"reports.md:Reports"
+"kpis.md:Key Performance Indicators"
+"north_star_metric.md:North Star Metric"
+"okr_metrics.md:OKR Metrics"
+"experiments.md:Experiments"
+"ab_testing.md:A/B Testing"
+"cohort_analysis.md:Cohort Analysis"
+"retention.md:Retention"
+"churn.md:Churn"
+"segmentation.md:Segmentation"
+"forecasting.md:Forecasting"
+"anomaly_detection.md:Anomaly Detection"
+"alerting.md:Analytics Alerting"
+"data_quality.md:Data Quality"
+"validation.md:Validation"
+"privacy.md:Privacy"
+"consent.md:Consent Management"
+"compliance.md:Compliance"
+"data_dictionary.md:Data Dictionary"
+"metric_dictionary.md:Metric Dictionary"
+"dimensions.md:Dimensions"
+"measures.md:Measures"
+"warehouse.md:Data Warehouse"
+"architecture_decisions.md:Analytics ADR"
+"changelog.md:Analytics Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise analytics framework created."
