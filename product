@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="product"
+
+mkdir -p "$ROOT"/{
+templates,
+research,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Product Knowledge Base"
+"index.md:Product Index"
+"vision.md:Vision"
+"mission.md:Mission"
+"strategy.md:Product Strategy"
+"objectives.md:Objectives"
+"okrs.md:Objectives and Key Results"
+"roadmap.md:Roadmap"
+"releases.md:Release Plan"
+"milestones.md:Milestones"
+"product_principles.md:Product Principles"
+"target_market.md:Target Market"
+"personas.md:User Personas"
+"customer_segments.md:Customer Segments"
+"customer_journeys.md:Customer Journeys"
+"use_cases.md:Use Cases"
+"user_stories.md:User Stories"
+"feature_registry.md:Feature Registry"
+"feature_flags.md:Feature Flags"
+"feature_requests.md:Feature Requests"
+"feature_prioritization.md:Feature Prioritization"
+"requirements.md:Requirements"
+"functional_requirements.md:Functional Requirements"
+"non_functional_requirements.md:Non-Functional Requirements"
+"acceptance_criteria.md:Acceptance Criteria"
+"business_rules.md:Business Rules"
+"workflows.md:Business Workflows"
+"success_metrics.md:Success Metrics"
+"kpis.md:KPIs"
+"analytics.md:Analytics"
+"experiments.md:Experiments"
+"a_b_testing.md:A/B Testing"
+"feedback.md:Customer Feedback"
+"interviews.md:Customer Interviews"
+"surveys.md:Surveys"
+"support_insights.md:Support Insights"
+"bug_prioritization.md:Bug Prioritization"
+"competitor_analysis.md:Competitor Analysis"
+"market_research.md:Market Research"
+"pricing.md:Pricing"
+"monetization.md:Monetization"
+"risks.md:Risk Register"
+"assumptions.md:Assumptions"
+"dependencies.md:Dependencies"
+"glossary.md:Glossary"
+"architecture_decisions.md:Product ADR"
+"changelog.md:Product Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise Product framework created."
