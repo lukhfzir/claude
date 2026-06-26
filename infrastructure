@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="infrastructure"
+
+mkdir -p "$ROOT"/{
+sessions,
+diagrams,
+templates,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Infrastructure Knowledge Base"
+"index.md:Infrastructure Index"
+"architecture.md:Infrastructure Architecture"
+"environments.md:Environments"
+"cloud_accounts.md:Cloud Accounts"
+"regions.md:Regions"
+"networking.md:Networking"
+"dns.md:DNS"
+"load_balancers.md:Load Balancers"
+"kubernetes.md:Kubernetes"
+"containers.md:Containers"
+"virtual_machines.md:Virtual Machines"
+"storage.md:Storage"
+"databases.md:Infrastructure Databases"
+"caching.md:Caching"
+"message_brokers.md:Message Brokers"
+"object_storage.md:Object Storage"
+"secrets_management.md:Secrets Management"
+"certificates.md:Certificates"
+"iam.md:IAM"
+"firewall.md:Firewall"
+"infrastructure_as_code.md:Infrastructure as Code"
+"terraform.md:Terraform"
+"ansible.md:Ansible"
+"ci_cd.md:CI/CD"
+"deployment_strategy.md:Deployment Strategy"
+"release_process.md:Release Process"
+"rollback.md:Rollback Strategy"
+"scaling.md:Scaling"
+"autoscaling.md:Autoscaling"
+"monitoring.md:Monitoring"
+"logging.md:Logging"
+"alerting.md:Alerting"
+"observability.md:Observability"
+"backup_strategy.md:Backup Strategy"
+"disaster_recovery.md:Disaster Recovery"
+"incident_response.md:Incident Response"
+"maintenance.md:Maintenance"
+"cost_management.md:Cost Management"
+"service_inventory.md:Service Inventory"
+"dependency_map.md:Dependency Map"
+"architecture_decisions.md:Infrastructure ADR"
+"changelog.md:Infrastructure Changelog"
+"known_issues.md:Known Issues"
+"tech_debt.md:Technical Debt"
+"runbooks.md:Infrastructure Runbooks"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Infrastructure knowledge base created."
