@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="incidents"
+
+mkdir -p "$ROOT"/{
+templates,
+postmortems,
+incident_reports,
+timelines,
+evidence,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Incident Management Knowledge Base"
+"index.md:Incident Index"
+"incident_policy.md:Incident Response Policy"
+"severity_levels.md:Severity Levels"
+"escalation_matrix.md:Escalation Matrix"
+"communication_plan.md:Communication Plan"
+"incident_lifecycle.md:Incident Lifecycle"
+"roles_and_responsibilities.md:Roles and Responsibilities"
+"oncall.md:On-call Procedures"
+"runbooks.md:Operational Runbooks"
+"playbooks.md:Incident Playbooks"
+"response_checklists.md:Response Checklists"
+"major_incidents.md:Major Incidents"
+"incident_log.md:Incident Log"
+"postmortems.md:Postmortems"
+"root_cause_analysis.md:Root Cause Analysis"
+"corrective_actions.md:Corrective Actions"
+"preventive_actions.md:Preventive Actions"
+"known_failure_modes.md:Known Failure Modes"
+"service_dependencies.md:Service Dependencies"
+"business_impact.md:Business Impact"
+"customer_communication.md:Customer Communication"
+"status_page.md:Status Page Procedures"
+"sla_breaches.md:SLA Breaches"
+"metrics.md:Incident Metrics"
+"trends.md:Incident Trends"
+"disaster_recovery.md:Disaster Recovery"
+"business_continuity.md:Business Continuity"
+"forensic_guidelines.md:Forensic Guidelines"
+"evidence_collection.md:Evidence Collection"
+"architecture_decisions.md:Incident ADR"
+"changelog.md:Incident Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise incident management framework created."
