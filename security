@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="security"
+
+mkdir -p "$ROOT"/{
+archive,
+templates,
+sessions
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Security Knowledge Base"
+"index.md:Security Index"
+"security_architecture.md:Security Architecture"
+"security_principles.md:Security Principles"
+"threat_model.md:Threat Model"
+"risk_register.md:Risk Register"
+"security_decisions.md:Security Decision Records"
+"compliance.md:Compliance"
+"standards.md:Security Standards"
+"policies.md:Security Policies"
+"secure_coding.md:Secure Coding Standards"
+"authentication.md:Authentication"
+"authorization.md:Authorization"
+"session_management.md:Session Management"
+"secrets_management.md:Secrets Management"
+"key_management.md:Key Management"
+"encryption.md:Encryption"
+"certificates.md:Certificates"
+"api_security.md:API Security"
+"network_security.md:Network Security"
+"application_security.md:Application Security"
+"infrastructure_security.md:Infrastructure Security"
+"cloud_security.md:Cloud Security"
+"container_security.md:Container Security"
+"kubernetes_security.md:Kubernetes Security"
+"dependency_security.md:Dependency Security"
+"supply_chain_security.md:Supply Chain Security"
+"vulnerability_management.md:Vulnerability Management"
+"penetration_testing.md:Penetration Testing"
+"security_testing.md:Security Testing"
+"audit_logging.md:Audit Logging"
+"monitoring.md:Security Monitoring"
+"incident_response.md:Incident Response"
+"forensics.md:Forensics"
+"disaster_recovery.md:Disaster Recovery"
+"privacy.md:Privacy"
+"data_classification.md:Data Classification"
+"data_retention.md:Data Retention"
+"access_control_matrix.md:Access Control Matrix"
+"third_party_risk.md:Third Party Risk"
+"known_vulnerabilities.md:Known Vulnerabilities"
+"security_checklists.md:Security Checklists"
+"runbooks.md:Security Runbooks"
+"changelog.md:Security Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise security framework created."
