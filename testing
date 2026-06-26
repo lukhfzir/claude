@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="testing"
+
+mkdir -p "$ROOT"/{
+templates,
+reports,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:Testing Knowledge Base"
+"index.md:Testing Index"
+"strategy.md:Testing Strategy"
+"quality_standards.md:Quality Standards"
+"definition_of_done.md:Definition of Done"
+"test_pyramid.md:Test Pyramid"
+"coverage.md:Coverage Targets"
+"test_plan.md:Master Test Plan"
+"test_matrix.md:Test Matrix"
+"environments.md:Test Environments"
+"test_data.md:Test Data"
+"fixtures.md:Fixtures"
+"mocks.md:Mocks"
+"regression_suite.md:Regression Suite"
+"smoke_tests.md:Smoke Tests"
+"sanity_tests.md:Sanity Tests"
+"unit_testing.md:Unit Testing"
+"integration_testing.md:Integration Testing"
+"api_testing.md:API Testing"
+"ui_testing.md:UI Testing"
+"e2e_testing.md:End-to-End Testing"
+"contract_testing.md:Contract Testing"
+"performance_testing.md:Performance Testing"
+"load_testing.md:Load Testing"
+"stress_testing.md:Stress Testing"
+"soak_testing.md:Soak Testing"
+"security_testing.md:Security Testing"
+"accessibility_testing.md:Accessibility Testing"
+"compatibility_testing.md:Compatibility Testing"
+"mobile_testing.md:Mobile Testing"
+"database_testing.md:Database Testing"
+"observability_testing.md:Observability Testing"
+"release_validation.md:Release Validation"
+"defect_tracking.md:Defect Tracking"
+"flaky_tests.md:Flaky Tests"
+"known_limitations.md:Known Testing Limitations"
+"test_metrics.md:Testing Metrics"
+"automation_guidelines.md:Automation Guidelines"
+"ci_testing.md:CI Testing"
+"architecture_decisions.md:Testing ADR"
+"changelog.md:Testing Changelog"
+"runbooks.md:Testing Runbooks"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise testing framework created."
