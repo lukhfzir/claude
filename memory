@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="memory"
+
+mkdir -p "$ROOT"/{
+sessions,
+conversations,
+milestones,
+archive,
+templates
+}
+
+create_file() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+create_file "README.md" "Memory System"
+create_file "index.md" "Memory Index"
+create_file "project.md" "Project Overview"
+create_file "vision.md" "Project Vision"
+create_file "objectives.md" "Objectives"
+create_file "roadmap.md" "Roadmap"
+create_file "current_state.md" "Current State"
+create_file "context.md" "Project Context"
+create_file "glossary.md" "Glossary"
+create_file "user_preferences.md" "User Preferences"
+create_file "stakeholders.md" "Stakeholders"
+create_file "assumptions.md" "Assumptions"
+create_file "constraints.md" "Constraints"
+create_file "risks.md" "Risk Register"
+create_file "decisions.md" "Architecture Decision Records"
+create_file "lessons_learned.md" "Lessons Learned"
+create_file "suggestions.md" "Suggestion Registry"
+create_file "rejected_ideas.md" "Rejected Ideas"
+create_file "known_issues.md" "Known Issues"
+create_file "tech_debt.md" "Technical Debt"
+create_file "changelog.md" "Project Changelog"
+create_file "next_actions.md" "Next Actions"
+create_file "bookmarks.md" "Important References"
+
+cat > CLAUDE_MEMORY.md <<'EOF'
+# AI Memory Instructions
+
+Before every session:
+
+1. Read:
+   - memory/index.md
+   - memory/project.md
+   - memory/current_state.md
+   - memory/context.md
+   - memory/decisions.md
+   - memory/constraints.md
+   - memory/user_preferences.md
+   - memory/known_issues.md
+   - memory/tech_debt.md
+   - memory/next_actions.md
+
+2. Summarize:
+   - Current project state
+   - Outstanding work
+   - Risks
+   - Active decisions
+
+3. Before suggesting anything:
+   - Check suggestions.md
+   - Check rejected_ideas.md
+   - Avoid repeating completed or rejected ideas.
+   - Explain if a repeated suggestion is still relevant.
+
+4. After significant work:
+   - Update current_state.md
+   - Update decisions.md
+   - Update changelog.md
+   - Update next_actions.md
+   - Add a session log.
+   - Record lessons learned.
+
+5. Archive completed work instead of deleting it.
+
+6. Preserve consistency with previous architectural decisions unless explicitly instructed otherwise.
+EOF
+
+echo "Enterprise memory framework created."
