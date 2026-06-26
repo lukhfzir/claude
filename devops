@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="devops"
+
+mkdir -p "$ROOT"/{
+templates,
+pipelines,
+scripts,
+sessions,
+archive
+}
+
+create() {
+cat > "$ROOT/$1" <<EOF
+# $2
+
+EOF
+}
+
+FILES=(
+"README.md:DevOps Knowledge Base"
+"index.md:DevOps Index"
+"strategy.md:DevOps Strategy"
+"architecture.md:DevOps Architecture"
+"git_workflow.md:Git Workflow"
+"branching_strategy.md:Branching Strategy"
+"release_strategy.md:Release Strategy"
+"versioning.md:Versioning Policy"
+"environments.md:Environments"
+"ci.md:Continuous Integration"
+"cd.md:Continuous Delivery"
+"pipelines.md:Pipeline Documentation"
+"deployment_strategy.md:Deployment Strategy"
+"rollback_strategy.md:Rollback Strategy"
+"blue_green.md:Blue-Green Deployment"
+"canary.md:Canary Deployment"
+"feature_flags.md:Feature Flags"
+"infrastructure_pipeline.md:Infrastructure Pipeline"
+"artifact_management.md:Artifact Management"
+"container_registry.md:Container Registry"
+"package_management.md:Package Management"
+"secrets_management.md:Secrets Management"
+"configuration_management.md:Configuration Management"
+"observability.md:Observability"
+"monitoring.md:Monitoring"
+"logging.md:Logging"
+"tracing.md:Distributed Tracing"
+"metrics.md:Metrics"
+"alerting.md:Alerting"
+"dashboards.md:Dashboards"
+"sla.md:Service Level Agreements"
+"slo.md:Service Level Objectives"
+"sli.md:Service Level Indicators"
+"incident_management.md:Incident Management"
+"postmortems.md:Postmortems"
+"runbooks.md:Operational Runbooks"
+"oncall.md:On-Call Procedures"
+"maintenance.md:Maintenance Windows"
+"backup_restore.md:Backup and Restore"
+"disaster_recovery.md:Disaster Recovery"
+"cost_optimization.md:Cost Optimization"
+"security_pipeline.md:Security Pipeline"
+"compliance.md:Compliance"
+"architecture_decisions.md:DevOps ADR"
+"known_issues.md:Known Issues"
+"technical_debt.md:Technical Debt"
+"changelog.md:DevOps Changelog"
+)
+
+for item in "${FILES[@]}"; do
+    IFS=":" read -r file title <<< "$item"
+    create "$file" "$title"
+done
+
+echo "Enterprise DevOps framework created."
